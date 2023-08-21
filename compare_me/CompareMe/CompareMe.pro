@@ -36,6 +36,7 @@ HEADERS  += mainwindow.h \
     Compareing/compareanalyse.h \
     Compareing/compareresult.h \
     Compareing/compareitem.h \
+    common.h \
     resultdisplay.h \
     Copy/copymain.h \
     Messages/updatemessage.h \

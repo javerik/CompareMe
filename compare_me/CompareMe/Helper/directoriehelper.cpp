@@ -2,17 +2,17 @@
 #include <QDebug>
 
 #include <QFileInfo>
-DirectorieHelper::DirectorieHelper()
+DirectoryHelper::DirectoryHelper()
 {
 }
 
-QStringList DirectorieHelper::GetAllDirs(QString baseDir)
+QStringList DirectoryHelper::GetAllDirs(QString baseDir)
 {
     QDir tempbase(baseDir);
     return tempbase.entryList(QDir::AllDirs);
 }
 
-QStringList DirectorieHelper::GetAllFiles(QString baseDir)
+QStringList DirectoryHelper::GetAllFiles(QString baseDir)
 {
     QDir d(baseDir);
 
@@ -31,7 +31,7 @@ QStringList DirectorieHelper::GetAllFiles(QString baseDir)
     return cleaned;
 }
 
-QStringList DirectorieHelper::GetAllDirsWithSub(QString baseDir)
+QStringList DirectoryHelper::GetAllDirsWithSub(QString baseDir)
 {
 
 
@@ -79,4 +79,12 @@ QStringList DirectorieHelper::GetAllDirsWithSub(QString baseDir)
 
 
 
+}
+
+bool DirectoryHelper::IsEmptyOrMissing(const QString &dir)
+{
+     QDir d(dir);
+     if (!d.exists()) return true;
+     if (d.entryList().isEmpty()) return true;
+     return false;
 }

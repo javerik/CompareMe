@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>435</width>
-    <height>360</height>
+    <width>414</width>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,14 +50,23 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Click GO when finish</string>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-     </widget>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="btn_selectFile">
+     <widget class="QPushButton" name="btn_start_compare">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>GO</string>
       </property>
@@ -79,7 +88,7 @@
     <item>
      <widget class="QProgressBar" name="progressBar_status">
       <property name="value">
-       <number>24</number>
+       <number>0</number>
       </property>
      </widget>
     </item>
@@ -90,8 +99,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>435</width>
-     <height>25</height>
+     <width>414</width>
+     <height>27</height>
     </rect>
    </property>
   </widget>

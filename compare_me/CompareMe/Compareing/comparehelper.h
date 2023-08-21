@@ -30,7 +30,7 @@ signals:
 public slots:
 
 private:
-    DirectorieHelper *_dirHelper;
+    DirectoryHelper *_dirHelper;
 
     CompareAnalyse DoAnalyse(CompareItem oldI,CompareItem newI);
 

@@ -7,6 +7,8 @@
 #include <Compareing/comparefilter.h>
 #include <Compareing/compareresult.h>
 #include <resultdisplay.h>
+#include <Helper/directoriehelper.h>
+
 namespace Ui {
 class MainWindow;
 }
@@ -24,11 +26,15 @@ private slots:
 
     void on_btn_browsFile_second_clicked();
 
-    void on_btn_selectFile_clicked();
+    void on_btn_start_compare_clicked();
 
     void UpdateMsg(int,QString,int);
 
     void AFinish();
+
+    void on_inp_selectedFilePath_textChanged(const QString &arg1);
+
+    void on_inp_selectedFilePath_second_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
@@ -37,7 +43,10 @@ private:
     CompareHelper *_compareHelper;
 
     ResultDisplay *_resultDisplay;
+    DirectoryHelper _directoryHelper;
+    bool dirs_valid();
 
+    void set_enable();
 };
 
 #endif // MAINWINDOW_H
