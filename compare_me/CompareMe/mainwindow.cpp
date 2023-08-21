@@ -2,8 +2,10 @@
 #include "ui_mainwindow.h"
 
 #include <QFileDialog>
-#include <Helper/directoriehelper.h>
 #include <QDebug>
+#include <Helper/directoriehelper.h>
+#include <common.h>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -43,7 +45,7 @@ void MainWindow::on_btn_browsFile_second_clicked()
 
 }
 
-void MainWindow::on_btn_selectFile_clicked()
+void MainWindow::on_btn_start_compare_clicked()
 {
     this->_compareHelper->SetData(this->ui->inp_selectedFilePath->text(),
                                   this->ui->inp_selectedFilePath_second->text());
@@ -72,3 +74,46 @@ void MainWindow::AFinish()
     this->_resultDisplay = new ResultDisplay(0,this->_compareHelper->GetData());
     this->_resultDisplay->show();
 }
+
+void MainWindow::on_inp_selectedFilePath_textChanged(const QString &arg1)
+{
+    if (arg1.isEmpty()) {
+        this->ui->inp_selectedFilePath->setStyleSheet("");
+        return;
+    }
+    if (_directoryHelper.IsEmptyOrMissing(arg1)) {
+        this->ui->inp_selectedFilePath->setStyleSheet(Ui::UiCommon::Background(Ui::LineEdit, Ui::COLOR_RED));
+    } else {
+        this->ui->inp_selectedFilePath->setStyleSheet(Ui::UiCommon::Background(Ui::LineEdit, Ui::COLOR_GREEN));
+    }
+
+    set_enable();
+}
+
+bool MainWindow::dirs_valid()
+{
+    QString dir1 = this->ui->inp_selectedFilePath->text();
+    QString dir2 = this->ui->inp_selectedFilePath_second->text();
+    return !(_directoryHelper.IsEmptyOrMissing(dir1) || _directoryHelper.IsEmptyOrMissing(dir2));
+}
+
+void MainWindow::set_enable()
+{
+    this->ui->btn_start_compare->setEnabled(dirs_valid());
+}
+
+
+void MainWindow::on_inp_selectedFilePath_second_textChanged(const QString &arg1)
+{
+    if (arg1.isEmpty()) {
+        this->ui->inp_selectedFilePath_second->setStyleSheet("");
+        return;
+    }
+    if (_directoryHelper.IsEmptyOrMissing(arg1)) {
+        this->ui->inp_selectedFilePath_second->setStyleSheet(Ui::UiCommon::Background(Ui::LineEdit, Ui::COLOR_RED));
+    } else {
+        this->ui->inp_selectedFilePath_second->setStyleSheet(Ui::UiCommon::Background(Ui::LineEdit, Ui::COLOR_GREEN));
+    }
+    set_enable();
+}
+

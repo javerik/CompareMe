@@ -15,7 +15,7 @@ void CompareHelper::SetData(QString oldDir, QString newDir)
 void CompareHelper::run()
 {
 
-    this->_dirHelper = new DirectorieHelper;
+    this->_dirHelper = new DirectoryHelper;
 
     //Get all Directories
 

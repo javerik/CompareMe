@@ -3,16 +3,20 @@
 
 #include <QString>
 #include <QDir>
-class DirectorieHelper
+
+
+class DirectoryHelper
 {
 public:
-    DirectorieHelper();
+    DirectoryHelper();
 
     QStringList GetAllDirs(QString baseDir);
 
     QStringList GetAllFiles(QString baseDir);
 
     QStringList GetAllDirsWithSub(QString baseDir);
+
+    bool IsEmptyOrMissing(const QString &dir);
 };
 
 #endif // DIRECTORIEHELPER_H
